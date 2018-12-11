@@ -26,16 +26,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    // ******************************************************************************************************
-    // kuo skiriasi roles nuo authorities: https://www.baeldung.com/spring-security-granted-authority-vs-role
-    // ******************************************************************************************************
+    /*
+     * kuo skiriasi roles nuo authorities: https://www.baeldung.com/spring-security-granted-authority-vs-role
+     */
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        // ***********************************************************************************************
-        // autorizacijos testavimui labai geras variantas yra tik atmintyje laikomi useriai (nereikia DB):
-        // ***********************************************************************************************
+        /*
+         * autorizacijos testavimui labai geras variantas yra tik atmintyje laikomi useriai (nereikia DB):
+         */
 //        auth
 //                .inMemoryAuthentication()
 //                .withUser("user")
@@ -43,9 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                    //.authorities("ROLE_USER");
 //                    .roles("USER");
 
-        // **********************************************
-        // realaus autentifikavimo pavyzdys naudojant JPA
-        // **********************************************
+        /*
+         * realaus autentifikavimo pavyzdys naudojant JPA
+         */
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
@@ -64,9 +64,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll();
 
 
-        // ********************************************************************
-        // galima naudoti ne tik Spring sugeneruota "login" langa, bet ir savo:
-        // ********************************************************************
+        /*
+         * galima naudoti ne tik Spring sugeneruota "login" langa, bet ir savo:
+         */
 //                    .loginPage("/login")
 //                    .usernameParameter("username").passwordParameter("password")
 //                    .and()
